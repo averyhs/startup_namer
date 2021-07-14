@@ -37,9 +37,12 @@ class _RandomWordsState extends State<RandomWords> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold (
+    return Scaffold(
       appBar: AppBar(
         title: Text('Startup Name Generator'),
+        actions: [
+          IconButton(icon: Icon(Icons.list), onPressed: _pushSaved),
+        ],
       ),
       body: _buildSuggestions(),
     );
@@ -63,7 +66,8 @@ class _RandomWordsState extends State<RandomWords> {
           // This calculates the actual number of word pairings in the ListView,
           // minus the divider widgets.
           final int index = i ~/ 2;
-          if (index >= _suggestions.length) { // end of list
+          if (index >= _suggestions.length) {
+            // end of list
             // Generate 10 more suggestions
             _suggestions.addAll(generateWordPairs().take(10));
           }
@@ -94,4 +98,8 @@ class _RandomWordsState extends State<RandomWords> {
       },
     );
   }
+
+  void _pushSaved() {
+  }
+
 }
